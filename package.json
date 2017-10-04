@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "pull-notify": "^0.1.1",
+    "pull-stream": "^3.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "eslint-config-minlint": "^2.0.0"
+  }
+}
