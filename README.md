@@ -29,6 +29,10 @@ bus.emit('foo', 'this is data')
 var barStream = FromEvent('bar')
 S( barStream(bus)(), S.log() )
 bus.emit('bar', 'bar data')
+
+// --------------------------------------------
+// this is data
+// bar data
 ```
 
 
