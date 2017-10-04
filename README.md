@@ -4,7 +4,7 @@ Helpers for working with pull streams
 
 ## install
 
-npm i -S pull-stream-util
+    npm install pull-stream-util
 
 ## examples
 
