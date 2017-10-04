@@ -1,20 +1,5 @@
-var S = require('pull-stream/pull')
-var many = require('pull-many')
-var map = require('pull-stream/throughs/map')
+var mux = require('./mux')
 var FromEvent = require('./from-event')
-
-function namespace (type, data) {
-    if (!data) return function (_data) {
-        return namespace(type, _data)
-    }
-    return [type, data]
-}
-
-function mux (streams) {
-    return many(Object.keys(streams).map(function (k) {
-        return S( streams[k], map(namespace(k)) )
-    }))
-}
 
 function FromEmitter (names, bus) {
     function streams () {
