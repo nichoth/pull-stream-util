@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "pull-many": "^1.0.8",
     "pull-notify": "^0.1.1",
     "pull-stream": "^3.6.1"
   },
