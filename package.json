@@ -1,4 +1,14 @@
 {
+  "name": "pull-stream-util",
+  "description": "Helpers for working with pull streams",
+  "version": "0.0.0",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "pull-many": "^1.0.8",
     "pull-notify": "^0.1.1",
@@ -7,5 +17,23 @@
   "devDependencies": {
     "eslint": "^4.8.0",
     "eslint-config-minlint": "^2.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nichoth/pull-stream-util.git"
+  },
+  "keywords": [
+    "pull-stream",
+    "stream",
+    "pull",
+    "event",
+    "emitter",
+    "notify"
+  ],
+  "author": "nichoth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nichoth/pull-stream-util/issues"
+  },
+  "homepage": "https://github.com/nichoth/pull-stream-util#readme"
 }
