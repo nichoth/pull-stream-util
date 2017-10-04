@@ -51,9 +51,7 @@ S( streams.foo(), S.log() )
 bus.emit('foo', 'this is the foos')
 
 // all events namespaced by key
-S( streams(), S.drain(function (ev) {
-    console.log('muxed events', ev)
-}) )
+S( streams(), S.drain(console.log.bind(console, 'muxed events')) )
 
 bus.emit('foo', 'foo event')
 bus.emit('bar', 'bar event')
