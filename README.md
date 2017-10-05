@@ -207,6 +207,8 @@ SS(sources, sinks)
 
 ### http
 
+@TODO
+
 ```js
 var S = require('pull-stream')
 var createServer = require('http').createServer
