@@ -10,6 +10,7 @@
     "example": "example"
   },
   "scripts": {
+    "postversion": "git push && git push --tags && npm publish",
     "test": "tape example/*.js"
   },
   "dependencies": {
