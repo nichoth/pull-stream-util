@@ -207,25 +207,31 @@ SS(sources, sinks)
 
 ### http
 
-@TODO
+Create streams of http events from objects of request data
 
 ```js
 var S = require('pull-stream')
 var createServer = require('http').createServer
 var HTTPStream = require('../http')
+var HTTPData = require('../http-data')
 var assert = require('assert')
 
-var Requests = HTTPStream({
+// xhr args
+var RequestData = HTTPData({
     url: 'http://localhost:8000',
     headers: { foo: 'bar' },
-    body: { test: 'test' }
+    body: { test: 'test' },
+    method: 'POST',
+    json: true
 })
 
-// pass in a url path ['foo', 'bar'] or nothing
-var request = Requests()
+// path and request body
+var requestData = RequestData(['foo'], { bar: 'baz' })
 
 var server = createServer(function onRequest (req, res) {
     assert.equal(req.headers.foo, 'bar')
+    assert.equal(req.url, '/foo')
+
     var data = ''
     req.on('data', function (d) {
         data += d
@@ -242,27 +248,33 @@ var server = createServer(function onRequest (req, res) {
 
 server.listen(8000, function () {
     S(
-        request({ bar: 'baz' }),
+        HTTPStream(requestData),
         S.collect(function (err, res) {
-            console.log('err', err)
-            var _res = res.map(function (ev) {
+            var resData = res.map(function (ev) {
                 return {
                     type: ev.type,
-                    req: ev.req,
+                    reqBody: ev.req.body,
                     body: ev.body
                 }
             })
-            console.log('res', _res)
 
-            assert.deepEqual(_res, [
-                { type: 'start', req: { bar: 'baz' }, body: undefined },
-                { type: 'resolve', req: { bar: 'baz' }, body: {
-                    hello: 'world' } }
+            assert.deepEqual(resData, [
+                {
+                    type: 'start',
+                    reqBody: { test: 'test', bar: 'baz' },
+                    body: undefined
+                },
+                {
+                    type: 'resolve',
+                    reqBody: { test: 'test', bar: 'baz' },
+                    body: { hello: 'world' }
+                }
             ])
+
+            console.log('http stream', err, resData)
             server.close()
         })
     )
 })
 ```
-
 
