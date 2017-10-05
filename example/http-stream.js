@@ -4,9 +4,13 @@ var HTTPStream = require('../http')
 var assert = require('assert')
 
 var Requests = HTTPStream({
+    url: 'http://localhost:8000',
     headers: { foo: 'bar' },
     body: { test: 'test' }
-})('http://localhost:8000')
+})
+
+// pass in a url path ['foo', 'bar'] or nothing
+var request = Requests()
 
 var server = createServer(function onRequest (req, res) {
     assert.equal(req.headers.foo, 'bar')
@@ -26,7 +30,7 @@ var server = createServer(function onRequest (req, res) {
 
 server.listen(8000, function () {
     S(
-        Requests({ bar: 'baz' }),
+        request({ bar: 'baz' }),
         S.collect(function (err, res) {
             console.log('err', err)
             var _res = res.map(function (ev) {
