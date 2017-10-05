@@ -278,3 +278,50 @@ server.listen(8000, function () {
 })
 ```
 
+### http data
+
+Helper for creating request data
+
+```js
+var HttpRequest = require('../http-data')
+var assert = require('assert')
+
+// take this data and return a new function
+var RequestData = HttpRequest({
+    url: 'http://localhost:8000',
+    method: 'POST',
+    headers: { foo: 'bar' },
+    body: { a: 'b' },
+    json: true
+})
+
+// merge this argument with the request body from above, 
+// return new request object
+var data = RequestData({ test: 'test' })
+console.log(data)
+assert.deepEqual(data, {
+    url: 'http://localhost:8000',
+    method: 'POST',
+    headers: { foo: 'bar' },
+    body: { a: 'b', test: 'test' },
+    json: true
+})
+
+// pass an array to add path segments to the `url` key,
+// return a new function
+var FooRequest = RequestData(['foo'])
+
+// add body data, return request data
+var fooData = FooRequest({ hello: 'world' })
+console.log(fooData)
+assert.deepEqual(fooData, {
+    url: 'http://localhost:8000/foo',
+    method: 'POST',
+    headers: { foo: 'bar' },
+    body: { a: 'b', hello: 'world' },
+    json: true
+})
+```
+
+
+
