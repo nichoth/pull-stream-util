@@ -14,12 +14,15 @@
     "test": "tape example/*.js"
   },
   "dependencies": {
+    "curry": "^1.2.0",
     "pull-async": "^1.0.0",
     "pull-cat": "^1.1.11",
     "pull-flat-merge": "^2.0.2",
     "pull-many": "^1.0.8",
     "pull-notify": "^0.1.1",
+    "pull-scan": "^1.0.0",
     "pull-stream": "^3.6.1",
+    "pull-with-latest": "^3.0.0",
     "request": "^2.83.0",
     "url-join": "^2.0.2",
     "xhr": "^2.4.0",

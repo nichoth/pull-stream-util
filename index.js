@@ -7,6 +7,8 @@ module.exports = {
     HTTPData: require('./http-data'),
     broadcast: require('./broadcast'),
     join: require('pull-flat-merge'),
-    chain: require('pull-flat-merge/chain')
+    chain: require('pull-flat-merge/chain'),
+    scan: require('pull-scan'),
+    sample: require('./sample')
 }
 
