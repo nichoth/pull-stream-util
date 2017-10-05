@@ -42,6 +42,9 @@ function HTTPStream (data, onErr) {
     ])
 }
 
+// take http opts and an object of path segments
+// return an object of functions that return streams of
+// http events namespaced by key
 function fromObject (opts, paths) {
     var Request = HTTPData(opts)
     if (!paths) return function (_paths) {
@@ -52,7 +55,7 @@ function fromObject (opts, paths) {
     return Object.keys(paths).reduce(function (acc, k) {
         acc[k] = function (args) {
             var _id = cid++
-            S(
+            return S(
                 HTTPStream(Request(paths[k], args)),
                 map(function (ev) {
                     ev.cid = _id
@@ -65,6 +68,7 @@ function fromObject (opts, paths) {
     }, {})
 }
 
+// for request/response semantics
 function AddId (prop) {
     prop = prop || cid
     var cid = 0
