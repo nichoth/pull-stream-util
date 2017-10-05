@@ -56,9 +56,9 @@ function fromObject (fns) {
             return S(
                 reqStream,
                 map(function (ev) {
-                    return xtend(ev, {
+                    return [k, xtend(ev, {
                         cid: _id
-                    })
+                    })]
                 })
             )
         }
