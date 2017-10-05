@@ -5,6 +5,8 @@ module.exports = {
     byKey: require('./by-key'),
     HTTP: require('./http'),
     HTTPData: require('./http-data'),
-    broadcast: require('./broadcast')
+    broadcast: require('./broadcast'),
+    join: require('pull-flat-merge'),
+    chain: require('pull-flat-merge/chain')
 }
 
