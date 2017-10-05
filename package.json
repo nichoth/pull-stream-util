@@ -10,7 +10,7 @@
     "example": "example"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape example/*.js"
   },
   "dependencies": {
     "pull-async": "^1.0.0",
@@ -25,7 +25,8 @@
   },
   "devDependencies": {
     "eslint": "^4.8.0",
-    "eslint-config-minlint": "^2.0.0"
+    "eslint-config-minlint": "^2.0.0",
+    "tape": "^4.8.0"
   },
   "repository": {
     "type": "git",
