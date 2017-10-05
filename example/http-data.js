@@ -32,6 +32,15 @@ assert.deepEqual(fooData, {
     json: true
 })
 
+var _data = FooRequest()
+console.log('_data', _data)
+assert.deepEqual(_data, {
+    url: 'http://localhost:8000/foo',
+    method: 'POST',
+    headers: { foo: 'bar' },
+    body: { a: 'b' },
+    json: true
+})
 
 
 

@@ -6,13 +6,15 @@ function HttpRequest (opts, path, body) {
         return HttpRequest(opts, _path, _body)
     }
 
-    if (path && !Array.isArray(path)) {
-        body = path
-        path = null
+    if (Array.isArray(path) && !body) {
+        return function (_body) {
+            return HttpRequest(opts, path, _body || {})
+        }
     }
 
-    if (!body) return function (_body) {
-        return HttpRequest(opts, path, _body)
+    if (path && !Array.isArray(path)) {
+        body = path
+        path = []
     }
 
     var _url = [opts.url || opts.uri].concat(path ? path : [])

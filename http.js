@@ -1,6 +1,5 @@
 var S = require('pull-stream/pull')
 var map = require('pull-stream/throughs/map')
-var xtend = require('xtend')
 var async = require('pull-async')
 var cat = require('pull-cat')
 var once = require('pull-stream/sources/once')
@@ -56,9 +55,8 @@ function fromObject (opts, paths) {
             S(
                 HTTPStream(Request(paths[k], args)),
                 map(function (ev) {
-                    return [k, xtend(ev, {
-                        cid: _id
-                    })]
+                    ev.cid = _id
+                    return [k, ev]
                 })
             )
         }
@@ -67,6 +65,19 @@ function fromObject (opts, paths) {
     }, {})
 }
 
-HTTPStream.fromObject = fromObject
+function AddId (prop) {
+    prop = prop || cid
+    var cid = 0
+    return function addId () {
+        var _id = cid++
+        return function (data) {
+            data[prop] = _id
+            return data
+        }
+    }
+}
+
+HTTPStream.FromObject = fromObject
+HTTPStream.AddId = AddId
 module.exports = HTTPStream
 
