@@ -10,6 +10,8 @@ Helpers for working with pull streams
 
 ### from event
 
+Create a stream from a single node style event
+
 ```js
 var S = require('pull-stream')
 var FromEvent = require('../from-event')
@@ -37,6 +39,8 @@ bus.emit('bar', 'bar data')
 
 
 ### from emitter
+
+Take an event emitter and return a stream of it's events 
 
 ```js
 var S = require('pull-stream')
@@ -68,6 +72,9 @@ bus.emit('baz', 'baz event')
 
 ### mux
 
+Take an object of streams and return a single stream of their values,
+namespaced by key 
+
 ```js
 var S = require('pull-stream')
 var mux = require('../mux')
@@ -96,6 +103,8 @@ console.log(mux.namespace.data(pair))  // 'data'
 ```
 
 ### broadcast
+
+Take a source stream and pipe it to multiple subscribers
 
 ```js
 
@@ -166,5 +175,35 @@ function doObject () {
     // 3bb
 }
 ```
+
+### by key
+
+Pipe an object of sources to an object of sinks
+
+```js
+var S = require('pull-stream')
+var SS = require('../by-key')
+
+var sources = {
+    foo: S.values(['foo1', 'foo2', 'foo3']),
+    bar: S.values(['bar1', 'bar2', 'bar3'])
+}
+
+var sinks = {
+    foo: S.log(),
+    bar: S.log()
+}
+
+SS(sources, sinks)
+
+// ------------------------
+// foo1
+// foo2
+// foo3
+// bar1
+// bar2
+// bar3
+```
+
 
 
