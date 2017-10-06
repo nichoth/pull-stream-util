@@ -11,6 +11,7 @@ module.exports = {
     scan: require('pull-scan'),
     sample: require('./sample'),
     many: require('pull-many'),
-    combineLatest: require('pull-combine-latest')
+    combineLatest: require('pull-combine-latest'),
+    async: require('pull-async')
 }
 
