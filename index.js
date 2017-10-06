@@ -1,9 +1,12 @@
+var HTTP = require('./http')
+HTTP.fromCb = require('./http/from-cb')
+
 module.exports = {
     fromEvent: require('./from-event'),
     fromEmitter: require('./from-emitter'),
     mux: require('./mux'),
     byKey: require('./by-key'),
-    HTTP: require('./http'),
+    HTTP: HTTP,
     HTTPData: require('./http-data'),
     broadcast: require('./broadcast'),
     join: require('pull-flat-merge'),
