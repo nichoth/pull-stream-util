@@ -8,7 +8,7 @@ module.exports = {
     broadcast: require('./broadcast'),
     join: require('pull-flat-merge'),
     chain: require('pull-flat-merge/chain'),
-    scan: require('pull-scan'),
+    scan: require('./scan'),
     sample: require('./sample'),
     many: require('pull-many'),
     combineLatest: require('pull-combine-latest'),
