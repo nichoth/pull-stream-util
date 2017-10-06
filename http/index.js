@@ -4,7 +4,7 @@ var async = require('pull-async')
 var cat = require('pull-cat')
 var once = require('pull-stream/sources/once')
 var xhr = require('request')
-var HTTPData = require('./http-data')
+var HTTPData = require('../http-data')
 
 function Err (err, data) {
     return {
