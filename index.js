@@ -12,6 +12,8 @@ module.exports = {
     sample: require('./sample'),
     many: require('pull-many'),
     combineLatest: require('pull-combine-latest'),
-    async: require('pull-async')
+    async: require('pull-async'),
+    cat: require('pull-cat'),
+    notify: require('pull-notify')
 }
 
