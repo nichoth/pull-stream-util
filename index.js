@@ -9,6 +9,8 @@ module.exports = {
     join: require('pull-flat-merge'),
     chain: require('pull-flat-merge/chain'),
     scan: require('pull-scan'),
-    sample: require('./sample')
+    sample: require('./sample'),
+    many: require('pull-many'),
+    combineLatest: require('pull-combine-latest')
 }
 
