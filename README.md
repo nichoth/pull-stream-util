@@ -326,6 +326,8 @@ assert.deepEqual(fooData, {
 
 ### from cb
 
+Take an async (node style) function, and return a function that returns streams of http events, just like the http request stream in this module.
+
 ```js
 var assert = require('assert')
 var fromCb = require('../http/from-cb')
