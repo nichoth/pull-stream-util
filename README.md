@@ -6,6 +6,28 @@ Helpers for working with pull streams
 
     npm install pull-stream-util
 
+
+* [from event](#from-event)
+* [from emitter](#from-emitter)
+* [mux](#mux)
+* [broadcast](#broadcast)
+* [by key](#by-key)
+* [http](#http)
+* [http data](#http-data)
+* [from cb](#from-cb)
+
+-----------------------------
+
+* cat
+* chain
+* combine latest
+* join
+* many
+* notify
+* sample
+* scan
+
+
 ## examples
 
 ### from event
