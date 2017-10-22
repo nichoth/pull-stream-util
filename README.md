@@ -2,11 +2,6 @@
 
 Helpers for working with pull streams 
 
-## install
-
-    npm install pull-stream-util
-
-
 * [from event](#from-event)
 * [from emitter](#from-emitter)
 * [mux](#mux)
@@ -26,6 +21,10 @@ Helpers for working with pull streams
 * notify
 * sample
 * scan
+
+## install
+
+    npm install pull-stream-util
 
 
 ## examples
