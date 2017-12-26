@@ -42,7 +42,8 @@ server.listen(8000, function () {
                 return {
                     type: ev.type,
                     reqBody: ev.req.body,
-                    body: ev.body
+                    body: ev.body,
+                    cid: ev.cid
                 }
             })
 
@@ -50,14 +51,16 @@ server.listen(8000, function () {
                 {
                     type: 'start',
                     reqBody: { test: 'test', bar: 'baz' },
+                    cid: 0,
                     body: undefined
                 },
                 {
                     type: 'resolve',
                     reqBody: { test: 'test', bar: 'baz' },
+                    cid: 0,
                     body: { hello: 'world' }
                 }
-            ])
+            ], 'stream events')
 
             console.log('http stream', err, resData)
             server.close()

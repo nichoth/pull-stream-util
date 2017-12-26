@@ -6,21 +6,28 @@ var once = require('pull-stream/sources/once')
 var xhr = require('request')
 var HTTPData = require('../http-data')
 
-function Err (err, data) {
+function Err (err, data, id) {
     return {
         type: 'error',
         err: err,
+        cid: id,
         req: data
     }
 }
 
+var id = 0
+function getId () {
+    return id++
+}
+
 function HTTPStream (data, onErr) {
     onErr = onErr === undefined ? Err : onErr
+    var cid = getId()
 
     var response$ = async(function (cb) {
         xhr(data, function onResponse (err, resp, body) {
             if (err) {
-                if (onErr) return cb(null, onErr(err, data))
+                if (onErr) return cb(null, onErr(err, data, cid))
                 return cb(err)
             }
 
@@ -28,7 +35,8 @@ function HTTPStream (data, onErr) {
                 type: 'resolve',
                 req: data,
                 res: resp,
-                body: body
+                body: body,
+                cid: cid
             })
         })
     })
@@ -36,6 +44,7 @@ function HTTPStream (data, onErr) {
     return cat([
         once({
             type: 'start',
+            cid: cid,
             req: data
         }),
         response$
