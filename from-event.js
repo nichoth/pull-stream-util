@@ -7,7 +7,7 @@ function FromEvent (name, emitter, onEnd) {
 
     var stream = Pushable(function onStreamEnd (err) {
         emitter.removeListener(name, stream.push)
-        if (onEnd) onEnd(err)
+        if (typeof onEnd === 'function') onEnd(err)
     })
 
     emitter.on(name, stream.push)
