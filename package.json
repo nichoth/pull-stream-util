@@ -23,7 +23,7 @@
     "pull-notify": "^0.1.1",
     "pull-scan": "^1.0.0",
     "pull-stream": "^3.6.1",
-    "pull-with-latest": "^3.0.0",
+    "pull-with-latest": "^3.0.1",
     "request": "^2.83.0",
     "url-join": "^2.0.2",
     "xhr": "^2.4.0",
